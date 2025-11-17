@@ -22,6 +22,7 @@
         <a class="nav-link" href="#projects">📁 Projects</a>
         <a class="nav-link" href="#case-studies">🎯 Case Studies</a>
         <a class="nav-link" href="#messages">✉️ Messages</a>
+        <a class="nav-link" href="#team">👥 Team</a>
         <a class="nav-link" href="#analytics">📈 Analytics</a>
         <hr class="my-3">
         <a class="nav-link text-danger" id="logoutBtn" href="#">🚪 Sign Out</a>
@@ -189,6 +190,31 @@
         </div>
       </section>
 
+      <!-- Team Section -->
+      <section id="team">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5>Team Members</h5>
+          <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#teamModal">+ Add Team Member</button>
+        </div>
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table mb-0" id="teamTable">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Bio</th>
+                  <th>Status</th>
+                  <th class="actions-col">Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <!-- Analytics Section -->
       <section id="analytics">
         <div class="mb-3">
@@ -290,6 +316,50 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-primary" id="saveProjectBtn">Save Project</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team Modal -->
+  <div class="modal fade" id="teamModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="teamModalTitle">Add New Team Member</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="teamEditId">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" id="teamName" placeholder="e.g., John Doe">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Role</label>
+            <input type="text" class="form-control" id="teamRole" placeholder="e.g., CEO & Founder">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Bio</label>
+            <textarea class="form-control" id="teamBio" rows="3" placeholder="Short bio..."></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select class="form-select" id="teamStatus" aria-label="Select team member status">
+              <option value="">Select Status</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Team Member Image</label>
+            <input type="file" class="form-control" id="teamImage" accept="image/*" title="Upload team member image">
+            <small class="text-muted">Choose an image file (JPG, PNG, etc.)</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="saveTeamBtn">Save Team Member</button>
         </div>
       </div>
     </div>
