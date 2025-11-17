@@ -1,0 +1,14 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "Reyad",
+    "ReyadSoft",
+    "reyadsoft"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    ".git"
+  ]
+}

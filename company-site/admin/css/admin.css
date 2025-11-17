@@ -1,0 +1,16 @@
+:root{--brand:#0d6efd}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:#f7f9fb}
+.admin-root{min-height:100vh}
+.sidebar{width:220px}
+.sidebar .brand img{display:block;margin:0 auto}
+.sidebar .nav-link{color:#333}
+.sidebar .nav-link.active{font-weight:600;color:var(--brand)}
+.main{padding:24px}
+.card{border-radius:12px}
+.table td, .table th{vertical-align:middle}
+@media (max-width:768px){
+  .sidebar{display:none}
+}
+
+/* login card sizing moved from inline style */
+.login-card{max-width:420px;width:100%;margin:0 auto}

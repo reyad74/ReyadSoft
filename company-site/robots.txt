@@ -1,0 +1,6 @@
+# robots.txt for ReyadSoft company website
+# Replace 'https://your-domain.com' in sitemap.xml with your real domain before deploying
+User-agent: *
+Disallow:
+
+Sitemap: https://your-domain.com/sitemap.xml

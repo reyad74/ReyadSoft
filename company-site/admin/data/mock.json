@@ -1,0 +1,9 @@
+{
+  "projects": [
+    {"id": 1, "title": "E-commerce Platform", "category": "Web"},
+    {"id": 2, "title": "Mobile Health App", "category": "Mobile"}
+  ],
+  "messages": [
+    {"id": 1, "name": "Alice", "email": "alice@example.com", "message": "Interested in a quote."}
+  ]
+}
