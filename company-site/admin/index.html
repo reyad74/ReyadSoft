@@ -152,6 +152,7 @@
             <table class="table mb-0" id="caseStudiesTable">
               <thead>
                 <tr>
+                  <th>Image</th>
                   <th>Title</th>
                   <th>Client</th>
                   <th>Outcome</th>
@@ -230,10 +231,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add New Service</h5>
+          <h5 class="modal-title" id="serviceModalTitle">Add New Service</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <input type="hidden" id="serviceEditId">
           <div class="mb-3">
             <label class="form-label">Service Title</label>
             <input type="text" class="form-control" id="serviceTitle" placeholder="e.g., Web Development">
@@ -256,10 +258,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add New Project</h5>
+          <h5 class="modal-title" id="projectModalTitle">Add New Project</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <input type="hidden" id="projectEditId">
           <div class="mb-3">
             <label class="form-label">Project Title</label>
             <input type="text" class="form-control" id="projectTitle" placeholder="e.g., E-commerce Platform">
@@ -301,6 +304,7 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <input type="hidden" id="caseEditId">
           <div class="mb-3">
             <label class="form-label">Case Study Title</label>
             <input type="text" class="form-control" id="caseTitle" placeholder="Project name and outcome">
@@ -321,6 +325,11 @@
               <option value="Draft">Draft</option>
               <option value="Archived">Archived</option>
             </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Case Study Image</label>
+            <input type="file" class="form-control" id="caseImage" accept="image/*" title="Upload case study image">
+            <small class="text-muted">Choose an image file (JPG, PNG, etc.)</small>
           </div>
         </div>
         <div class="modal-footer">
