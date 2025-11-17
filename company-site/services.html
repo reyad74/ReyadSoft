@@ -46,80 +46,10 @@
       </div>
     </section>
 
-    <!-- Services Grid -->
-    <section class="container py-5">
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="card shadow-sm border-0 h-100 service-card">
-            <div class="card-body p-4">
-              <div class="mb-3">
-                <span class="fs-3">📊</span>
-              </div>
-              <h5 class="fw-bold mb-3">Product Strategy & Discovery</h5>
-              <p class="text-muted mb-0">Workshops, user research, product roadmaps, metrics and go-to-market planning tailored to your business goals.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card shadow-sm border-0 h-100 service-card">
-            <div class="card-body p-4">
-              <div class="mb-3">
-                <span class="fs-3">🎨</span>
-              </div>
-              <h5 class="fw-bold mb-3">UI/UX Design</h5>
-              <p class="text-muted mb-0">User-centered design, interactive prototypes, usability testing, and comprehensive design systems.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card shadow-sm border-0 h-100 service-card">
-            <div class="card-body p-4">
-              <div class="mb-3">
-                <span class="fs-3">💻</span>
-              </div>
-              <h5 class="fw-bold mb-3">Web & Mobile Engineering</h5>
-              <p class="text-muted mb-0">Modern React/Vue frontends, Node.js/Python backends, RESTful APIs, and real-time systems built for scale.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card shadow-sm border-0 h-100 service-card">
-            <div class="card-body p-4">
-              <div class="mb-3">
-                <span class="fs-3">☁️</span>
-              </div>
-              <h5 class="fw-bold mb-3">Cloud Architecture & DevOps</h5>
-              <p class="text-muted mb-0">Infrastructure as code, CI/CD pipelines, Docker/Kubernetes, monitoring and cost optimization on AWS/GCP/Azure.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card shadow-sm border-0 h-100 service-card">
-            <div class="card-body p-4">
-              <div class="mb-3">
-                <span class="fs-3">🤖</span>
-              </div>
-              <h5 class="fw-bold mb-3">AI/ML Integration</h5>
-              <p class="text-muted mb-0">Machine learning model development, data pipelines, NLP, computer vision and intelligent automation solutions.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card shadow-sm border-0 h-100 service-card">
-            <div class="card-body p-4">
-              <div class="mb-3">
-                <span class="fs-3">🔒</span>
-              </div>
-              <h5 class="fw-bold mb-3">Security & Compliance</h5>
-              <p class="text-muted mb-0">HIPAA/GDPR compliance, penetration testing, data encryption, access control and security audits.</p>
-            </div>
-          </div>
-        </div>
+    <!-- Services Grid (rendered from localStorage if available) -->
+    <section class="container py-5" id="servicesSection">
+      <div id="servicesGrid" class="row g-4">
+        <!-- fallback static content will be used if no dynamic services exist -->
       </div>
 
       <!-- CTA Section -->
@@ -135,6 +65,28 @@
         </div>
       </div>
     </section>
+
+    <script>
+      // Render services from localStorage if available, otherwise use existing DOM fallback
+      document.addEventListener('DOMContentLoaded', function(){
+        try{
+          const raw = localStorage.getItem('ns_site_data');
+          if(!raw) return; // keep static fallback if none
+          const store = JSON.parse(raw);
+          const services = store.services;
+          if(!services || !services.length) return; // fallback
+          const grid = document.getElementById('servicesGrid');
+          grid.innerHTML = ''; // clear fallback
+          services.forEach(s=>{
+            const col = document.createElement('div');
+            col.className = 'col-lg-6';
+            col.innerHTML = `\n              <div class="card shadow-sm border-0 h-100 service-card">\n                <div class="card-body p-4">\n                  <div class="mb-3">\n                    <span class="fs-3">🛠️</span>\n                  </div>\n                  <h5 class="fw-bold mb-3">${escapeHtml(s.title)}</h5>\n                  <p class="text-muted mb-0">${escapeHtml(s.short||'')}</p>\n                </div>\n              </div>`;
+            grid.appendChild(col);
+          });
+        }catch(e){ console.warn('services render error', e); }
+        function escapeHtml(s){ return (s||'').replace(/[&<>"]+/g, function(ch){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]; }); }
+      });
+    </script>
 
     <!-- Engagement Models -->
     <section class="bg-light py-5">

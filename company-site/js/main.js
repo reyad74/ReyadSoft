@@ -12,7 +12,18 @@ document.addEventListener('DOMContentLoaded', function(){
         alert('Please complete the form.');
         return;
       }
-      // For now we just simulate submission
+      // Save submission to localStorage so admin can view messages
+      try{
+        const raw = localStorage.getItem('ns_site_data');
+        let store = raw?JSON.parse(raw):{};
+        store.messages = store.messages || [];
+        const id = Date.now();
+        store.messages.push({id,name,email,message});
+        localStorage.setItem('ns_site_data', JSON.stringify(store));
+      }catch(err){
+        console.error('Could not save message locally', err);
+      }
+      // friendly confirmation
       alert('Thanks, ' + name + '! Your message has been received.');
       form.reset();
     });

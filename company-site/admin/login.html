@@ -44,6 +44,19 @@
     </div>
   </footer>
 
-  <script>\n    // simple login redirect — demo only\n    document.getElementById('loginForm').addEventListener('submit', function(e){\n      e.preventDefault();\n      const user = document.getElementById('username').value.trim();\n      const pass = document.getElementById('password').value.trim();\n      if(user === 'admin' && pass === 'admin123'){\n        localStorage.setItem('ns_admin_logged_in','1');\n        window.location.href = 'index.html';\n      } else {\n        alert('Invalid credentials for demo. Try admin / admin123');\n      }\n    });\n  </script>
+  <script>
+    // simple login redirect — demo only
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      if(user === 'admin' && pass === 'admin123'){
+        localStorage.setItem('ns_admin_logged_in','1');
+        window.location.href = 'index.html';
+      } else {
+        alert('Invalid credentials for demo. Try admin / admin123');
+      }
+    });
+  </script>
 </body>
 </html>
